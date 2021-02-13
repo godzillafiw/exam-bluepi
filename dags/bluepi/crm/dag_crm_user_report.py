@@ -4,6 +4,7 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from datetime import timedelta
 from airflow.contrib.operators.postgres_to_gcs_operator import PostgresToGoogleCloudStorageOperator
+from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 
 default_args = {
     'start_date': airflow.utils.dates.days_ago(0),
@@ -18,7 +19,7 @@ dag = DAG(
     schedule_interval=None,
     dagrun_timeout=timedelta(minutes=20))
 
-DESTINATION_BUCKET = 'gs://datalake-bluepi-bucket'
+DESTINATION_BUCKET = 'datalake-bluepi-bucket'
 DESTINATION_DIRECTORY = "blupi/crm"
 
 # priority_weight has type int in Airflow DB, uses the maximum.
@@ -29,12 +30,25 @@ DESTINATION_DIRECTORY = "blupi/crm"
 #     depends_on_past=False,
 #     priority_weight=2**31-1)
 
+table_name = 'users'
+
 ingest_data = PostgresToGoogleCloudStorageOperator(
         task_id="ingest_data",
         dag=dag,
+        sql=f"SELECT * FROM {table_name}",
+        export_format="csv",
+        field_delimiter="|",
+        filename=f"{DESTINATION_BUCKET}/{DESTINATION_DIRECTORY}/export_{table_name}/{table_name}.csv",
         bucket=DESTINATION_BUCKET,
-        filename=DESTINATION_DIRECTORY + "/{{ execution_date }}" + "/test-db.csv",
-        sql='''SELECT * FROM users;''',
         retries=3,
-        postgres_conn_id="postgres_crm"
+        postgres_conn_id="postgres_crm",
+        google_cloud_storage_conn_id="bluepi_gcp_connection",
     )
+
+task_default = BigQueryOperator(
+    task_id='task_default_connection',
+    dag=dag,
+    bql='SELECT 1', use_legacy_sql=False
+    )
+
+ingest_data > task_default
