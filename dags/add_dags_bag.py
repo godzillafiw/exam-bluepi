@@ -2,9 +2,8 @@
 import os
 from airflow.models import DagBag
 
-
+# Loop add dag in path dags/bluepi
 dags_dirs= [dir[0] for x in os.walk('~/dags/bluepi')]
-#dags_dirs = ['~/docker-airflow/dags/dags_scgp/DAGS_CIP/', '/docker-airflow/dags/dags_scgp/DAGS_FC/']
 
 for dir in dags_dirs:
    dag_bag = DagBag(os.path.expanduser(dir))

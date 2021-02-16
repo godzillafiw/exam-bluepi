@@ -28,7 +28,7 @@ default_args = {
 dag = DAG(
     'de_anucha_exam',
     default_args=default_args,
-    description='load data from database',
+    description='Load data from database',
     schedule_interval='@hourly',
     dagrun_timeout=timedelta(minutes=20)
 )
