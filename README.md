@@ -36,9 +36,9 @@
 
     ![picture](images/work-flow.png)
 
-* Spark
+* PySpark
     *   Compute Engine ( Instance-e2-jupyter-bluepi )
-        *   Spark Environment
+        *   PySpark Environment
             ```python
                 os.environ['PYSPARK_PYTHON'] = '/usr/bin/python3'
                 os.environ['PYSPARK_DRIVER_PYTHON'] = '/usr/bin/python3'
@@ -54,17 +54,18 @@
                 cd workspace/
                 source workspace/bin/activate
             ```
-        *  status service
+        *  Status service
             ```s
                 systemctl status jupyter
             ```
-        *   example
+        *   Example
             ```s
                 notebook/PySpark.ipynb
                 notebook/Getdata-final.ipynb
             ```
 
 * BigQuery (DW)
+
 ```sql
     SELECT * FROM `de-exam-anucha.dw_bluepi.user_log` LIMIT 1000
 ```
@@ -76,4 +77,17 @@
     | 8745cacb-f8aa-4294-b824 |  55514cf0-3026-404f-8ea3-f41b00bdf6b5  |  login  |  false  |  2020-02-16 18:46:06  |  2020-02-16 18:46:06  |
     | 9b44ab5c-8516-4507-a46f |  55514cf0-3026-404f-8ea3-f41b00bdf6b5  |  login  |  false  |  2021-02-10 05:11:18  |  2021-02-10 05:11:18  |
 
+* Storage
+    *  Bucket
+    ```s
+        TODAY =  date.today().strftime('%Y-%m-%d')
+        HOURS = strftime("%H%M%S", gmtime())
+        PROJECT_ID = 'de-exam-anucha'
+        DESTINATION_BUCKET = 'datalake-bluepi-bucket'
+        DESTINATION_DIRECTORY = 'bluepi/crm'
+        DATABASE = 'postgres'
+        TABLE_NAME = 'user_log'
+        DATASET_NAME = 'dw_bluepi'
 
+        gs://{PROJECT_ID}/{DESTINATION_DIRECTORY}/{DATABASE}/dt={YYY-MM-DD}/{TABLE_NAME}-{TODAY}.csv
+    ```
