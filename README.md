@@ -39,12 +39,18 @@
 * Spark
     *   Compute Engine ( Instance-e2-jupyter-bluepi )
         *   Install
-            ```bash
+            ```sh
                 sudo apt update
                 sudo apt install python3-pip python3-dev
                 sudo -H pip3 install --upgrade pip
                 sudo -H pip3 install virtualenv
             ```
+
+* Notebook
+    ```
+        notebook/PySpark.ipynb
+        notebook/Getdata-final.ipynb
+    ```
 
 * Example
 ```sql
