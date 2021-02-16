@@ -13,10 +13,10 @@
     ├── credential
     ├── dags
     │   ├── bluepi
-    │   │   ├── crm (project1)
-    │   │   │   ├── env (other config)
-    │   │   │   ├── src (code function)
-    │   │   ├── sale (project2)
+    │       ├── crm (project1)
+    │       │   ├── env (other config)
+    │       │   ├── src (code function)
+    │       ├── sale (project2)
     ├── logs
     ├── .gitignore
     ├── airflow.cfg
