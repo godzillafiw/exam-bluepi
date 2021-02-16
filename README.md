@@ -39,12 +39,19 @@
 * Spark
     *   Compute Engine ( Instance-e2-jupyter-bluepi )
         *   Install
-            ```sh
+            ```s
                 sudo apt update
                 sudo apt install python3-pip python3-dev
                 sudo -H pip3 install --upgrade pip
                 sudo -H pip3 install virtualenv
             ```
+    *   Spark Environment
+        ```python
+            os.environ['PYSPARK_PYTHON'] = '/usr/bin/python3'
+            os.environ['PYSPARK_DRIVER_PYTHON'] = '/usr/bin/python3'
+            os.environ['SPARK_HOME'] = '/home/spark/spark-3.0.1'
+            os.environ['PYTHONPATH'] = '/home/spark/spark-3.0.1/python/lib/py4j-0.10.9-src.zip:/home/spark/spark-3.0.1/python/:'
+        ```
 
 * Notebook
     ```
