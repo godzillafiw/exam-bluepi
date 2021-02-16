@@ -79,7 +79,7 @@
 
 * Storage
     *  Bucket
-    ```s
+    ```py
         TODAY =  date.today().strftime('%Y-%m-%d')
         HOURS = strftime("%H%M%S", gmtime())
         PROJECT_ID = 'de-exam-anucha'
@@ -89,5 +89,5 @@
         TABLE_NAME = 'user_log'
         DATASET_NAME = 'dw_bluepi'
 
-        gs://{PROJECT_ID}/{DESTINATION_DIRECTORY}/{DATABASE}/dt={YYY-MM-DD}/{TABLE_NAME}-{TODAY}.csv
+        backet=f"gs://{PROJECT_ID}/{DESTINATION_DIRECTORY}/{DATABASE}/dt={YYY-MM-DD}/{TABLE_NAME}-{TODAY}.csv"
     ```
