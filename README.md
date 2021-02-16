@@ -38,28 +38,33 @@
 
 * Spark
     *   Compute Engine ( Instance-e2-jupyter-bluepi )
-        *   Install
-            ```s
-                sudo apt update
-                sudo apt install python3-pip python3-dev
-                sudo -H pip3 install --upgrade pip
-                sudo -H pip3 install virtualenv
+        *   Spark Environment
+            ```python
+                os.environ['PYSPARK_PYTHON'] = '/usr/bin/python3'
+                os.environ['PYSPARK_DRIVER_PYTHON'] = '/usr/bin/python3'
+                os.environ['SPARK_HOME'] = '/home/spark/spark-3.0.1'
+                os.environ['PYTHONPATH'] = '/home/spark/spark-3.0.1/python/lib/py4j-0.10.9-src.zip:/home/spark/spark-3.0.1/python/:'
             ```
-    *   Spark Environment
-        ```python
-            os.environ['PYSPARK_PYTHON'] = '/usr/bin/python3'
-            os.environ['PYSPARK_DRIVER_PYTHON'] = '/usr/bin/python3'
-            os.environ['SPARK_HOME'] = '/home/spark/spark-3.0.1'
-            os.environ['PYTHONPATH'] = '/home/spark/spark-3.0.1/python/lib/py4j-0.10.9-src.zip:/home/spark/spark-3.0.1/python/:'
-        ```
 
-* Notebook
-    ```
-        notebook/PySpark.ipynb
-        notebook/Getdata-final.ipynb
-    ```
+* Jupyter Notebook
+    *   Compute Engine ( Instance-e2-jupyter-bluepi )
+        *   Environment
+            ```s
+                su - jupyter
+                cd workspace/
+                source workspace/bin/activate
+            ```
+        *  status service
+            ```s
+                systemctl status jupyter
+            ```
+        *   example
+            ```s
+                notebook/PySpark.ipynb
+                notebook/Getdata-final.ipynb
+            ```
 
-* Example
+* BigQuery (DW)
 ```sql
     SELECT * FROM `de-exam-anucha.dw_bluepi.user_log` LIMIT 1000
 ```
