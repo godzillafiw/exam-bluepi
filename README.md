@@ -19,9 +19,9 @@
     │       │   ├── src (code function)
     │       │   ├── dag_de_anucha_exam.py (DAG)
     │       ├── sale (project2)
-    │       │   ├── env (other config)
-    │       │   ├── src (code function)
-    │       │   ├── other.py
+    │           ├── env (other config)
+    │           ├── src (code function)
+    │           ├── other.py
     ├── logs
     ├── .gitignore
     ├── airflow.cfg
@@ -33,7 +33,18 @@
 
 
 * Architecture
+
     ![picture](images/work-flow.png)
+
+* Spark
+    *   Compute Engine ( Instance-e2-jupyter-bluepi )
+        *   Install
+            ```bash
+                sudo apt update
+                sudo apt install python3-pip python3-dev
+                sudo -H pip3 install --upgrade pip
+                sudo -H pip3 install virtualenv
+            ```
 
 * Example
 ```sql

@@ -63,35 +63,15 @@ ingest_data = PostgresToGoogleCloudStorageOperator(
     google_cloud_storage_conn_id="bluepi_gcp_connection",
 )
 
-# Load data to BigQuery
-# load_csv = GoogleCloudStorageToBigQueryOperator(
-#     task_id='gcs_to_bq_example',
-#     bucket=DESTINATION_BUCKET,
-#     source_objects=[f"{DESTINATION_DIRECTORY}/{DATABASE}/dt={TODAY}/{TABLE_NAME}-{TODAY}.csv"],
-#     destination_project_dataset_table=f"{DATASET_NAME}.{TABLE_NAME}",
-#     source_format='CSV',
-#     # create_disposition='CREATE_IF_NEEDED',
-#     field_delimiter="|",
-#     schema_fields=[
-#         {"name": "id", "type": "STRING", "mode": "REQUIRED"},
-#         {"name": "user_id", "type": "STRING", "mode": "NULLABLE"},
-#         {"name": "action", "type": "STRING", "mode": "NULLABLE"},
-#         {"name": "status", "type": "STRING", "mode": "NULLABLE"},
-#         {"name": "created_at", "type": "STRING", "mode": "NULLABLE"},
-#         {"name": "updated_at", "type": "STRING", "mode": "NULLABLE"}
-#     ],
-#     skip_leading_rows=1,
-#     write_disposition='WRITE_TRUNCATE',
-#     google_cloud_storage_conn_id='bluepi_gcp_connection',
-#     dag=dag)
-
+# Transform data then upload dato into BigQuery (Data warehouse)
 load_tranform_data = PythonOperator(
     task_id='load_tranform_data',
     dag=dag,
+    retries=1,
     python_callable=tranform_data
 )
 
-# Validate data
+# Validate data on BigQuery
 validate_data = BigQueryOperator(
     task_id='validate_data',
     dag=dag,
