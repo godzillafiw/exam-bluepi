@@ -37,9 +37,9 @@
 ```
     SELECT * FROM `de-exam-anucha.dw_bluepi.user_log` LIMIT 1000
 ```
-    *   Output
+*  Output
 
-    | id                      | user_id                                |  action |  status |  created_at           |  updated_at
+    | id                      |  user_id                               |  action |  status |  created_at           |  updated_at
     | ----------------------- |  ------------------------------------  |  -----  |  -----  |  -------------------  |  ---------------------|
     | 4b796e06-3178-4133-ad30 |  55514cf0-3026-404f-8ea3-f41b00bdf6b5  |  login  |  false  |  2020-02-16 18:46:05  |  2020-02-16 18:46:05  |
     | 8745cacb-f8aa-4294-b824 |  55514cf0-3026-404f-8ea3-f41b00bdf6b5  |  login  |  false  |  2020-02-16 18:46:06  |  2020-02-16 18:46:06  |
