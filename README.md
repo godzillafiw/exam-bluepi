@@ -63,6 +63,32 @@
                 notebook/PySpark.ipynb
                 notebook/Getdata-final.ipynb
             ```
+* CloudBuild
+    *   trigger name : airflow-bluepi-deploy
+    *   Cloudbuild.yaml
+        ```yaml
+            steps:
+                - name: 'docker.io/library/python:3.7'
+                id: Environment
+                entrypoint: /bin/sh
+                args:
+                - -c
+                - 'pip install -r requirements.txt'
+                - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+                id: Deploy
+                entrypoint: bash
+                args: [ '-c', 'if [ "$BRANCH_NAME" == "main" ]; then echo "$BRANCH_NAME" && gsutil -m rsync -d -r ./dags gs://${_COMPOSER_BUCKET}/dags; else echo "Working on $BRANCH_NAME"; fi']
+                substitutions:
+                    _COMPOSER_BUCKET: asia-northeast2-airflow-af25a695-bucket
+        ```
+    *   Environment
+        ```py
+            'pip install -r requirements.txt'
+        ```
+    *   Deploy
+         ```sh
+            if [ "$BRANCH_NAME" == "main" ]; then echo "$BRANCH_NAME" && gsutil -m rsync -d -r ./dags gs://${_COMPOSER_BUCKET}/dags; else echo "Working on $BRANCH_NAME"; fi
+        ```
 
 * Storage
     *  Bucket
@@ -80,10 +106,15 @@
     ```
 
 * BigQuery (DW)
+    ```py
+        PROJECT_ID = 'de-exam-anucha'
+        DATASET_NAME = 'dw_bluepi'
+        TABLE_NAME = 'user_log'
+    ```
 
-```sql
-    SELECT * FROM `de-exam-anucha.dw_bluepi.user_log` LIMIT 1000
-```
+    ```sql
+        SELECT * FROM `de-exam-anucha.dw_bluepi.user_log` LIMIT 1000
+    ```
 
 *  Output
 
