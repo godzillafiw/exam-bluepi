@@ -1,4 +1,5 @@
 # Exam-bluepi
+
 * All Service
     *   Kubernetes Engine (Airflow)            # Cluster -> asia-northeast2-airflow-af25a695-gke
     *   Compute Engine (Jupyter)               # Instance-e2-jupyter-bluepi
@@ -30,11 +31,12 @@
     └── requirements.txt
 ```
 
+
 * Architecture
     ![picture](images/work-flow.png)
 
 * Example
-```
+```sql
     SELECT * FROM `de-exam-anucha.dw_bluepi.user_log` LIMIT 1000
 ```
 *  Output
