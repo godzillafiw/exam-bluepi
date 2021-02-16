@@ -1,11 +1,11 @@
 # Exam-bluepi
-* All Servivce
-    *   Kubernetes Engine (Airflow)                      # Cluster -> asia-northeast2-airflow-af25a695-gke
-    *   Compute Engine (Jupyter)                         # Instance-e2-jupyter-bluepi
-    *   CloudBuild (CI/CD)                               # Trigger airflow-bluepi-deploy
-    *   Storage                                          # Datalake-bluepi-bucket, asia-northeast2-airflow-af25a695-bucket
-    *   BigQuery                                         # ( Data Warehouse ) de-exam-anucha:dw_bluepi.user_log
-    *   Postgres                                         # ( Data source ) user_log
+* All Service
+    *   Kubernetes Engine (Airflow)            # Cluster -> asia-northeast2-airflow-af25a695-gke
+    *   Compute Engine (Jupyter)               # Instance-e2-jupyter-bluepi
+    *   CloudBuild (CI/CD)                     # Trigger airflow-bluepi-deploy
+    *   Storage                                # Datalake-bluepi-bucket, asia-northeast2-airflow-af25a695-bucket
+    *   BigQuery                               # ( Data Warehouse ) de-exam-anucha:dw_bluepi.user_log
+    *   Postgres                               # ( Data source ) user_log
 
 * Code Structure
 ```
@@ -39,7 +39,7 @@
 ```
 *  Output
 
-    | id                      |  user_id                               |  action |  status |  created_at           |  updated_at
+    | id                      |  user_id                               |  action |  success |  created_at           |  updated_at
     | ----------------------- |  ------------------------------------  |  -----  |  -----  |  -------------------  |  ---------------------|
     | 4b796e06-3178-4133-ad30 |  55514cf0-3026-404f-8ea3-f41b00bdf6b5  |  login  |  false  |  2020-02-16 18:46:05  |  2020-02-16 18:46:05  |
     | 8745cacb-f8aa-4294-b824 |  55514cf0-3026-404f-8ea3-f41b00bdf6b5  |  login  |  false  |  2020-02-16 18:46:06  |  2020-02-16 18:46:06  |
