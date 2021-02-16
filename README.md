@@ -5,8 +5,10 @@
     *   CloudBuild (CI/CD)
     *   Storage
     *   BigQuery (Data Warehouse)
+    *   Postgres
 
 * Code Structure
+    .
     ├── credential
     ├── dags
     │   ├── bluepi
