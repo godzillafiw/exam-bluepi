@@ -171,4 +171,4 @@ def query_data():
     print(df.info())
 
 # query_data()
-tranform_data()
+# tranform_data()
