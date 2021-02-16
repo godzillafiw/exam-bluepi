@@ -16,7 +16,7 @@
     │   ├── bluepi
     │       ├── crm (project1)
     │       │   ├── env (other config)
-    │       │   ├── src (code function)
+    │       │   ├── src (etl helper function)
     │       │   ├── dag_de_anucha_exam.py (DAG)
     │       ├── sale (project2)
     │           ├── env (other config)

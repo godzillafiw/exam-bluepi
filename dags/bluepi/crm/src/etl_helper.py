@@ -69,7 +69,6 @@ def tranform_data():
 
     # Get data form google cloud storage
     file_path=f"gs://{DESTINATION_BUCKET}/{DESTINATION_DIRECTORY}/{DATABASE}/dt={TODAY}/{TABLE_NAME}-{TODAY}.csv"
-    print(file_path)
     df_gcs = pd.read_csv(file_path, skiprows=1, sep='|', header=None, names=col_names)
 
     # Tranform colmns and value
