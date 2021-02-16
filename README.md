@@ -8,6 +8,7 @@
     *   Postgres
 
 * Code Structure
+```
     .
     ├── credential
     ├── dags
@@ -23,6 +24,7 @@
     ├── env_var.json
     ├── README.md
     └── requirements.txt
+```
 
 * Architecture
     ![picture](images/work-flow.png)
